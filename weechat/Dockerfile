@@ -9,7 +9,15 @@ RUN apt-get update && apt-get install -y \
   libgnutls-dev \
   libcurl4-openssl-dev \
   libncurses-dev \
-  libncursesw5-dev
+  libncursesw5-dev \
+  libperl-dev \
+  libaspell-dev \
+  python-dev \
+  libv8-dev \
+  tcl-dev \
+  liblua5.2-dev \
+  ruby-dev \
+  guile-2.0-dev
 
 ARG WEECHAT_VERSION
 ENV WEECHAT_VERSION ${WEECHAT_VERSION:-master}
@@ -28,4 +36,5 @@ RUN cmake .. \
 RUN make && make install
 
 WORKDIR /
+ENV TERM xterm-256color
 ENTRYPOINT ["/usr/bin/weechat"]
